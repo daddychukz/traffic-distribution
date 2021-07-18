@@ -1,0 +1,29 @@
+replicaCount: 2
+
+name: java-app
+
+container:
+  port: 8080
+  env:
+    - key: key
+      value: value
+
+image:
+  repository: daddychuks/java-app
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: v1
+
+
+hpa:
+  minReplicas: 2
+  maxReplicas: 4
+  CPUPercent: 60
+
+resources:
+  limits:
+    cpu: 400m
+    memory: 500Mi
+  requests:
+    cpu: 100m
+    memory: 300Mi
