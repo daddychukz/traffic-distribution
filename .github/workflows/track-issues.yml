@@ -6,16 +6,16 @@ on:
       - reopened
       - transferred
 
-env:
-  GITHUB_TOKEN: ${{ secrets.MY_PAT }}
-  PROJECT_NUMBER: 1
-  ACCOUNT: daddychukz
   
 jobs:
   track_issue:
     runs-on: ubuntu-latest
     steps:
       - name: Get project data
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_PAT }}
+          PROJECT_NUMBER: 1
+          ACCOUNT: daddychuk
         run: |
           gh api graphql --header 'GraphQL-Features: projects_next_graphql' -f query='
             query($account: String!, $number: Int!) {
@@ -31,8 +31,6 @@ jobs:
                   }
                 }
               }
-            }' -f account=$ACCOUNT -F number=$PROJECT_NUMBER > data.json
-            
-          cat data.json
+            }' -f account=$ACCOUNT -F number=$PROJECT_NUMBER 
 
           
