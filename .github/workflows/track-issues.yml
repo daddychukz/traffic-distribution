@@ -5,12 +5,11 @@ on:
       - opened
       - reopened
       - transferred
-      - closed
 
 env:
   GITHUB_TOKEN: ${{ secrets.MY_PAT }}
   PROJECT_NUMBER: 1
-  USER: daddychukz
+  ACCOUNT: daddychukz
   
 jobs:
   track_issue:
@@ -19,8 +18,8 @@ jobs:
       - name: Get project data
         run: |
           gh api graphql --header 'GraphQL-Features: projects_next_graphql' -f query='
-            query($user: String!, $number: Int!) {
-              user(login: $user){
+            query($account: String!, $number: Int!) {
+              user(login: $account){
                 projectNext(number: $number) {
                   id
                   fields(first:20) {
@@ -32,7 +31,7 @@ jobs:
                   }
                 }
               }
-            }' -f user=$USER -F number=$PROJECT_NUMBER > data.json
+            }' -f account=$ACCOUNT -F number=$PROJECT_NUMBER > data.json
             
           cat data.json
 
