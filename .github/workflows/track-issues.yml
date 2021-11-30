@@ -32,6 +32,8 @@ jobs:
                   }
                 }
               }
-            }' -f user=$USER -F number=$PROJECT_NUMBER
+            }' -f user=$USER -F number=$PROJECT_NUMBER > data.json
+            
+          cat data.json
 
           
