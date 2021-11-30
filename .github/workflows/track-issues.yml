@@ -18,19 +18,12 @@ jobs:
           ACCOUNT: daddychukz
         run: |
           gh api graphql --header 'GraphQL-Features: projects_next_graphql' -f query='
-            query($account: String!, $number: Int!) {
-              user(login: $account){
-                projectNext(number: $number) {
+            query{
+              user(login: "daddychukz"){
+                projectNext(number: 1) {
                   id
-                  fields(first:20) {
-                    nodes {
-                      id
-                      name
-                      settings
-                    }
-                  }
                 }
               }
-            }' -f account=$ACCOUNT -F number=$PROJECT_NUMBER 
+            }' 
 
           
