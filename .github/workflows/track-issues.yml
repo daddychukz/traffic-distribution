@@ -19,9 +19,12 @@ jobs:
         run: |
           gh api graphql --header 'GraphQL-Features: projects_next_graphql' -f query='
             query{
-              user(login: "daddychukz"){
-                projectNext(number: 1) {
-                  id
+              user(login: "daddychukz") {
+                projectsNext(first: 20) {
+                  nodes {
+                    id
+                    title
+                  }
                 }
               }
             }' 
