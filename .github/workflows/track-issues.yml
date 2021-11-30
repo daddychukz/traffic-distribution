@@ -14,8 +14,8 @@ jobs:
       - name: Get project data
         env:
           GITHUB_TOKEN: ${{ secrets.MY_PAT }}
-          PROJECT_NUMBER: 1
-          ACCOUNT: daddychuk
+          PROJECT_NUMBER: 10
+          ACCOUNT: daddychukz
         run: |
           gh api graphql --header 'GraphQL-Features: projects_next_graphql' -f query='
             query($account: String!, $number: Int!) {
