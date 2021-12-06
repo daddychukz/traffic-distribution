@@ -11,9 +11,16 @@ jobs:
   track_issue:
     runs-on: ubuntu-latest
     steps:
+      - name: Generate token
+        id: generate_token
+        uses: tibdex/github-app-token@v1
+        with:
+          app_id: ${{ secrets.APP_ID }}
+          private_key: ${{ secrets.APP_PEM }}
+          
       - name: Get project data
         env:
-          GITHUB_TOKEN: ${{ secrets.MY_PAT }}
+          GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
           PROJECT_NUMBER: 1
           ACCOUNT: daddychukz
         run: |
