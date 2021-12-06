@@ -25,19 +25,15 @@ jobs:
           ACCOUNT: daddychukz
         run: |
           gh api graphql -f query='
-            query($user: String!, $number: Int!) {
-              user(login: $user){
-                projectNext(number: $number) {
-                  id
-                  fields(first:20) {
-                    nodes {
-                      id
-                      name
-                      settings
-                    }
+            query{
+              user(login: "daddychukz") {
+                projectsNext(first: 20) {
+                  nodes {
+                    id
+                    title
                   }
                 }
               }
-            }' -f user=$ACCOUNT -F number=$PROJECT_NUMBER 
+            }' 
 
           
