@@ -1,35 +1,12 @@
-name: Add issue to project
+name: test
 on:
 - pull_request
 
   
 jobs:
-  track_issue:
+  track_issue_test:
     runs-on: ubuntu-latest
     steps:
-      - name: Generate token
-        id: generate_token
-        uses: tibdex/github-app-token@v1.5.1
-        with:
-          app_id: ${{ secrets.APP_ID }}
-          private_key: ${{ secrets.APP_PEM }}
-          
       - name: Get project data
-        env:
-          GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
-          PROJECT_NUMBER: 1
-          ORGANIZATION: mydevprofile
         run: |
-          gh api graphql -f query='
-            query{
-              user(login: "daddychukz") {
-                projectsNext(first: 20) {
-                  nodes {
-                    id
-                    title
-                  }
-                }
-              }
-            }' 
-
-          
+          echo just a test
