@@ -4,7 +4,7 @@ on:
 
   
 jobs:
-  track_issue:
+  track_issue_test:
     runs-on: ubuntu-latest
     steps:
       - name: Get project data
