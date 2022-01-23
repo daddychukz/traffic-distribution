@@ -15,21 +15,6 @@ jobs:
           private_key: ${{ secrets.APP_PEM }}
           
       - name: Get project data
-        env:
-          GITHUB_TOKEN: ${{ steps.generate_token.outputs.token }}
-          PROJECT_NUMBER: 1
-          ORGANIZATION: mydevprofile
         run: |
-          gh api graphql -f query='
-            query{
-              user(login: "daddychukz") {
-                projectsNext(first: 20) {
-                  nodes {
-                    id
-                    title
-                  }
-                }
-              }
-            }' 
-
+          echo just a test
           
