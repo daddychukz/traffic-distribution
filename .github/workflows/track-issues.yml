@@ -1,4 +1,4 @@
-name: Add issue to project
+name: test
 on:
 - pull_request
 
